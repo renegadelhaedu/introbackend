@@ -6,9 +6,18 @@ app = Flask(__name__)
 def pagina_principal():
     return render_template('index.html')
 
-@app.route('/paginacadastro')
+@app.route('/paginacadastro', methods=['GET'])
 def mostrar_pag_cadastro():
     return render_template('pagcadastro.html')
+
+@app.route('/cadastraraluno', methods=['POST'])
+def cadastrar_usuario():
+    nome = request.form.get('nomeusuario')
+    matricula = request.form.get('matricula')
+    cpf = request.form.get('cpf')
+    print(nome, matricula, cpf)
+    return 'deu certo', 200
+
 
 
 if __name__ == '__main__':
