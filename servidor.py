@@ -1,4 +1,5 @@
 from flask import *
+import dao
 
 app = Flask(__name__)
 
@@ -15,8 +16,10 @@ def cadastrar_usuario():
     nome = request.form.get('nomeusuario')
     matricula = request.form.get('matricula')
     cpf = request.form.get('cpf')
-    print(nome, matricula, cpf)
-    return 'deu certo', 200
+    if dao.inserir(nome, matricula, cpf):
+        return 'deu certo', 200
+    else:
+        return 'algo deu errado', 400
 
 
 
