@@ -26,4 +26,17 @@ def inserir(nome, matricula, cpf):
     conexao.close()
     return exito
 
+def buscar_usuario(cpf):
+    conexao = conectar()
+    cur = conexao.cursor()
+
+    cur.execute(f"SELECT * FROM aluno WHERE cpf = '{cpf}'")
+    recset = cur.fetchall()
+
+    conexao.close()
+    return recset
+
+print(buscar_usuario('12345678909'))
+
+
 
