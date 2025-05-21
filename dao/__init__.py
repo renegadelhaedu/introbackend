@@ -36,7 +36,15 @@ def buscar_usuario(cpf):
     conexao.close()
     return recset
 
-print(buscar_usuario('12345678909'))
+def listar_alunos():
+    conexao = conectar()
+    cur = conexao.cursor()
+
+    cur.execute(f"SELECT nome FROM aluno")
+    recset = cur.fetchall()
+
+    conexao.close()
+    return recset
 
 
 

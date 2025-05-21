@@ -38,8 +38,13 @@ def buscar_cpf():
     else:
         return 'usuário nao encontrado'
 
-
-
+@app.route('/paginalistar')
+def listar_alunos():
+    alunos = dao.listar_alunos()
+    if len(alunos) > 0:
+        return render_template('listar.html', alunos=alunos)
+    else:
+        return 'nao tem alunos cadastrados'
 
 if __name__ == '__main__':
     app.run()
